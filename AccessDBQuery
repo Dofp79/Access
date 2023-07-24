@@ -1,0 +1,77 @@
+-- Create a new database named AccessDB
+CREATE DATABASE AccessDB;
+
+-- Switch the current database context to AccessDB
+USE AccessDB;
+
+-- Create a new table named DBUser
+-- The table has three columns: UID, UName, and Password
+-- The UID column is an identity column that automatically generates values starting from 1 with an increment of 1
+-- The UID column is set as the primary key of the table
+-- The UName column is of type varchar with a maximum length of 50 characters, used to store the username
+-- The Password column is of type varchar with a maximum length of 50 characters, used to store the password
+CREATE TABLE DBUser (
+    UID int IDENTITY(1,1) PRIMARY KEY,
+    UName varchar(50),
+    Password varchar(50)
+);
+
+
+
+CREATE PROCEDURE sp_RegisterUser (
+    @UName varchar(100), -- Input parameter: Username to be registered
+    @Password varchar(100), -- Input parameter: Password for the registered user
+    @RegisteredUser bit OUTPUT, -- Output parameter: Flag indicating if the user was successfully registered (1) or not (0)
+    @Message varchar(100) OUTPUT -- Output parameter: Message providing information about the registration status
+)
+AS
+BEGIN
+    -- Check if a record with the given UName already exists in the DBUser table
+    IF (NOT EXISTS(SELECT * FROM DBUser WHERE UName = @UName))
+    BEGIN
+        -- If no matching record is found, insert a new record into the DBUser table
+        INSERT INTO DBUser (UName, Password) VALUES (@UName, @Password)
+        SET @RegisteredUser = 1 -- Set the flag to 1 to indicate successful registration
+        SET @Message = 'The registration has been done.' -- Set the message for successful registration
+    END
+    ELSE
+    BEGIN
+        -- If a matching record is found, indicate that the user is not registered
+        SET @RegisteredUser = 0 -- Set the flag to 0 to indicate unsuccessful registration
+        SET @Message = 'This name already exists in our database, please choose another one.' -- Set the message for existing username
+    END
+END;
+
+
+
+CREATE PROCEDURE sp_ValidateUser (
+    @UName varchar(100), -- Input parameter: Username to be validated
+    @Password varchar(100) -- Input parameter: Password to be validated
+)
+AS
+BEGIN
+    -- Check if a record exists in the DBUser table with the given UName and Password
+    IF(EXISTS(SELECT * FROM DBUser WHERE UName = @UName AND Password = @Password))
+        -- If a matching record is found, select the UID from the DBUser table
+        SELECT UID FROM DBUser WHERE UName = @UName AND Password = @Password;
+    ELSE
+        -- If no matching record is found, return '0' as a flag indicating invalid credentials
+        SELECT '0';
+END;
+
+
+-- Declare variables to hold the output values from the stored procedure
+DECLARE @RegisteredUser bit, @Message varchar (100)
+-- Execute the sp_RegisterUser stored procedure with input parameters and retrieve output values
+EXEC sp_RegisterUser 'paco@gmail','03AC674216F3E15C761EE1A5E255F067953623C8B388B4459E13F978D7C846F4', @RegisteredUser OUTPUT, @Message OUTPUT
+SELECT @RegisteredUser -- Print the value of the @RegisteredUser variable
+SELECT @Message;-- Print the value of the @Message variable
+
+
+ALTER TABLE DBUser
+ALTER COLUMN Password VARCHAR(200); -- Adjust the size as needed
+
+
+
+	
+
