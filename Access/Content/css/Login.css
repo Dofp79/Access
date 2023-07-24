@@ -1,0 +1,95 @@
+﻿/* Coded with love by Mutiullah Samim */
+/* the design is taken from this address / https://bootsnipp.com/tags/login */
+/*This CSS code provides styles for a login page. It includes styling for the background, user card, logo 
+container, logo, form container, login button, input group text, input fields, and custom checkbox. The comments explain each section's 
+purpose and the applied styles.*/
+
+/* Styling for the body and html elements */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #60a3bc !important; /* Set background color */
+}
+
+/* Styling for the user card */
+.user_card {
+    height: 400px;
+    width: 350px;
+    margin-top: auto;
+    margin-bottom: auto;
+    background: #f39c12; /* Set background color */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /* Add box shadow */
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /* Add webkit box shadow */
+    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /* Add moz box shadow */
+    border-radius: 5px; /* Add border radius */
+}
+
+/* Styling for the brand logo container */
+.brand_logo_container {
+    position: absolute;
+    height: 170px;
+    width: 170px;
+    top: -75px;
+    border-radius: 50%;
+    background: #60a3bc; /* Set background color */
+    padding: 10px;
+    text-align: center;
+}
+
+/* Styling for the brand logo */
+.brand_logo {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    border: 2px solid white; /* Add border with white color */
+}
+
+/* Styling for the form container */
+.form_container {
+    margin-top: 100px;
+}
+
+/* Styling for the login button */
+.login_btn {
+    width: 100%;
+    background: #c0392b !important; /* Set background color */
+    color: white !important; /* Set text color to white */
+}
+
+    /* Styling for the focused login button */
+    .login_btn:focus {
+        box-shadow: none !important;
+        outline: 0px !important;
+    }
+
+/* Styling for the login container */
+.login_container {
+    padding: 0 2rem;
+}
+
+/* Styling for the input group text */
+.input-group-text {
+    background: #c0392b !important; /* Set background color */
+    color: white !important; /* Set text color to white */
+    border: 0 !important;
+    border-radius: 0.25rem 0 0 0.25rem !important;
+}
+
+/* Styling for the input user and input pass */
+.input_user,
+.input_pass:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
+}
+
+/* Styling for the custom checkbox */
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: #c0392b !important; /* Set background color when checked */
+}

@@ -1,0 +1,90 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>My Awesome Login Page</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Include jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Include Font Awesome CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <!-- Additional Bootstrap CSS (optional) -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <!-- Custom CSS for Login Page -->
+    <link href="~/Content/css/Login.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Main Container -->
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <!-- User Card -->
+            <div class="user_card">
+                <!-- Brand Logo Container -->
+                <div class="d-flex justify-content-center">
+                    <div class="brand_logo_container">
+                        <!-- Display Logo Image -->
+                        <img src="@Url.Content("~/images/logo.png")" class="brand_logo" alt="Logo">
+                    </div>
+                </div>
+                <!-- Form Container -->
+                <div class="d-flex justify-content-center form_container">
+                    <!-- Registration Form -->
+                    <form action="@Url.Action("Registration","Access")" method="post">
+                        <!-- Input Group for Username -->
+                        <div class="input-group mb-3">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input type="text" name="UName" class="form-control input_user" value="" placeholder="username">
+                        </div>
+                        <!-- Input Group for Password -->
+                        <div class="input-group mb-2">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input type="password" name="Password" class="form-control input_pass" value="" placeholder="password">
+                        </div>
+                        <!-- Input Group for Confirming Password -->
+                        <div class="input-group mb-2">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input type="password" name="PasswordConfirmation" class="form-control input_pass" value="" placeholder="Confirm password">
+                        </div>
+
+                        <!-- Show Error Message (if any) -->
+                        @if (ViewData["Message"] != null)
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                @ViewData["Message"]
+                            </div>
+                        }
+
+                        <!-- Button to Submit the Form -->
+                        <div class="d-flex justify-content-center mt-3 login_container">
+                            <button type="submit" name="button" class="btn login_btn">Registration</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Link to Login Page -->
+                <div class="mt-4">
+                    <div class="d-flex justify-content-center links">
+                        Log in with <a href="@Url.Action("Login","Access")" class="ml-2"> your account</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS (optional) -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <!-- Include jQuery (optional) -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+</html>
