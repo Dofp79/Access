@@ -1,26 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+/*
+    ---------------------------------------------------------------
+    Class: User
+    Description:
+        This model class defines the structure for user-related data 
+        used in the ASP.NET MVC application. It represents a user 
+        object and is primarily used for handling login and registration 
+        processes.
+
+        The class includes properties for:
+        - UID: Unique identifier of the user (primary key)
+        - UName: Username
+        - Password: User's password (hashed before storage)
+        - PasswordConfirmation: Used during registration to verify the password
+
+    Usage:
+        - Passed between views and controllers
+        - Serves as a data carrier for authentication logic
+
+    Namespace: Access.Models
+    ---------------------------------------------------------------
+*/
+
+using System;
 
 namespace Access.Models
 {
-    /// <summary>
-    /// In this C# code, we have a model class named "User" within the namespace "Access.Models." A model class is used to 
-    /// represent data and define the structure of objects used in an application.
-    /// </summary>
     public class User
     {
-        // Property representing the unique identifier of the user
+        // Unique identifier for the user (used as a primary key)
         public int UID { get; set; }
 
-        // Property representing the username of the user
+        // Username of the user
         public string UName { get; set; }
 
-        // Property representing the password of the user
+        // User's password (stored as SHA256 hash in the database)
         public string Password { get; set; }
 
-        // Property representing the user's entered password confirmation during registration
+        // Password confirmation used during registration to verify password match
         public string PasswordConfirmation { get; set; }
     }
 }
