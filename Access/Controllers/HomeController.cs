@@ -1,4 +1,24 @@
-﻿using Access.Permissions;
+/*
+    ---------------------------------------------------------------
+    Class: HomeController
+    Description:
+        This controller handles the core navigation actions for the 
+        web application such as Index, About, Contact, and Logout.
+
+        It uses a custom action filter attribute `[ValidateAttributesSection]` 
+        to ensure only authenticated users (those with Session["User"] != null) 
+        can access these actions. Unauthorized users are redirected to the 
+        login page.
+
+    Security:
+        - The `[ValidateAttributesSection]` attribute enforces session-based 
+          access control across all action methods in this controller.
+
+    Target Framework: ASP.NET MVC
+    ---------------------------------------------------------------
+*/
+
+using Access.Permissions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,44 +27,42 @@ using System.Web.Mvc;
 
 namespace Access.Controllers
 {
-    /// <summary>
-    /// The HomeController class provides various actions related to the home page and uses the [ValidateAttributesSection] 
-    /// attribute to ensure that only authorized users can access these actions. This way, it helps protect sensitive 
-    /// areas of the application from unauthorized access.
-    /// </summary>
-    [ValidateAttributesSection]
+    [ValidateAttributesSection] // Custom filter to restrict access to authenticated users
     public class HomeController : Controller
     {
+        // GET: Home/Index - Default home page view
         public ActionResult Index()
         {
             return View();
         }
 
+        // GET: Home/About - About page with a message
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
+        // GET: Home/Contact - Contact page with a message
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
             return View();
         }
-        /// <summary>
-        /// The [ValidateAttributesSection] attribute applied to the controller indicates that the custom action filter 
-        /// ValidateAttributesSection should be executed for every action method in this controller. The ValidateAttributesSection 
-        /// action filter checks if a user is logged in (Session["User"] != null) and redirects them to the login page if not 
-        /// authorized.
-        /// </summary>
-        /// <returns></returns>
+
+        /*
+            Action: Logout
+            Description:
+                - Clears the current user's session (logs the user out)
+                - Redirects the user to the login page
+
+            Security:
+                - Protected by the ValidateAttributesSection filter
+        */
         public ActionResult Logout()
         {
-            Session["User"] = null;
-            return RedirectToAction("Login", "Access");
+            Session["User"] = null; // Clear session
+            return RedirectToAction("Login", "Access"); // Redirect to login
         }
-
     }
 }
