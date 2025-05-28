@@ -6,7 +6,7 @@ Es richtet sich an Einsteiger und Fortgeschrittene, die strukturierte Datenpfleg
 
 ---
 
-## 🎯 Ziel des Projekts
+## 🔷 Ziel des Projekts
 
 ✔️ Entwicklung einer anwendungsfreundlichen Oberfläche zur Dateneingabe und -auswertung  
 ✔️ Anbindung an eine relationale Datenbankstruktur (Access `.accdb`)  
@@ -15,7 +15,7 @@ Es richtet sich an Einsteiger und Fortgeschrittene, die strukturierte Datenpfleg
 
 ---
 
-## 🧱 Projektbestandteile
+## 🔷 Projektbestandteile
 
 | Komponente       | Beschreibung |
 |------------------|--------------|
@@ -26,7 +26,7 @@ Es richtet sich an Einsteiger und Fortgeschrittene, die strukturierte Datenpfleg
 
 ---
 
-## 🗂️ Anwendungslogik
+## 🔷 Anwendungslogik
 
 - **Formulare:** Benutzerfreundliche Oberfläche für CRUD-Operationen  
 - **Abfragen:** Vorgefertigte SQL-Abfragen zur Datenselektion  
@@ -35,7 +35,7 @@ Es richtet sich an Einsteiger und Fortgeschrittene, die strukturierte Datenpfleg
 
 ---
 
-## 🚀 Anwendung starten
+## 🔷 Anwendung starten
 
 1. Repository klonen oder ZIP herunterladen  
 2. Datei `Access.accdb` mit Microsoft Access (2016 oder höher) öffnen  
@@ -44,14 +44,14 @@ Es richtet sich an Einsteiger und Fortgeschrittene, die strukturierte Datenpfleg
 
 ---
 
-## 🔐 Hinweise zur Sicherheit
+## 🔷 Hinweise zur Sicherheit
 
 - Enthält keine vertraulichen Daten – Beispielprojekt für Ausbildungszwecke  
 - Optional: Passwortschutz oder Benutzerlogin über VBA implementierbar
 
 ---
 
-## 💡 Erweiterungsideen
+## 🔷 Erweiterungsideen
 
 - Integration eines **SQL-Backends** statt Access-Tabellen  
 - Synchronisation mit **SharePoint-Listen**  
